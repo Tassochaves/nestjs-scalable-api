@@ -5,6 +5,14 @@ GET http://localhost:3000/products
 
 ###
 POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Monitor Gamer Dell QHD 144Hz",
+    "slug": "monitor-gamer-dell-qhd-144hz",
+    "description": "Monitor gamer de alta performance com resolução QHD para imagens nítidas.",
+    "price": 2999.50
+}
 
 ###
 GET http://localhost:3000/products/1
