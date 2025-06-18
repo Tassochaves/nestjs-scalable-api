@@ -14,16 +14,16 @@ Content-Type: application/json
 }
 
 ### OBTÊM UM UNICO PRODUTO
-GET http://localhost:3000/products/cmahly9tm000168woswv6izey
+GET http://localhost:3000/products/c95b07d3-5c13-4e6f-b60b-1bd778c884c7
 
 ### ATUALIZA UM PRODUTO
-PATCH http://localhost:3000/products/3d894160-d2ec-41e8-a314-1f791b55e7d7
+PATCH http://localhost:3000/products/c95b07d3-5c13-4e6f-b60b-1bd778c884c7
 Content-Type: application/json
 
 {
-    "name": "Monitor Gamer Dell",
-    "slug": "monitor-gamer-dell",
-    "description": "Monitor gamer de alta performance com resolução QHD para imagens nítidas.",
+    "name": "Monitor Gamer Dell xxxx",
+    "slug": "monitor-gamer-x",
+    "description": "Monitor gamer xxxxxx",
     "price": 2999.50
 }
 

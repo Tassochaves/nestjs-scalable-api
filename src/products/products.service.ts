@@ -47,13 +47,24 @@ export class ProductsService {
 
   async update(id: string, updateProductDto: UpdateProductDto) {
 
-    const existingProduct = await this.prismaService.product.findFirst({
+    let product = await this.prismaService.product.findFirst({
       where:{
-        id,
+        slug: updateProductDto.slug,
       }
     });
 
-    if(!existingProduct){
+    if(product && product.id !== id){
+      throw new ProductSlugAlreadyExistsError(updateProductDto.slug);
+    }
+
+    product = product && product.id === id 
+      ? product : await this.prismaService.product.findFirst({
+        where: {
+          id
+        }
+      });
+
+    if(!product){
       throw new NotFoundError('Product', id);
     }
 
