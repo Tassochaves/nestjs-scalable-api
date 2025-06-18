@@ -7,8 +7,8 @@ POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "name": "Monitor Gamer Dell QHD 144Hzx",
-    "slug": "monitor-gamer-dell-qhd-144hzx",
+    "name": "Monitor Gamer Dell",
+    "slug": "monitor-gamer",
     "description": "Monitor gamer de alta performance com resolução QHD para imagens nítidas.",
     "price": 2999.50
 }
