@@ -3,6 +3,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ProductSlugAlreadyExistsError } from './errors';
+import { NotFoundError } from 'src/common/errors';
 
 @Injectable()
 export class ProductsService {
@@ -30,15 +31,32 @@ export class ProductsService {
     return this.prismaService.product.findMany();
   }
 
-  findOne(id: string) {
-    return this.prismaService.product.findFirst({
+  async findOne(id: string) {
+    const existingProduct = await this.prismaService.product.findFirst({
       where:{
         id,
       }
     });
+
+    if(!existingProduct){
+      throw new NotFoundError('Product', id);
+    }
+
+    return existingProduct;
   }
 
-  update(id: string, updateProductDto: UpdateProductDto) {
+  async update(id: string, updateProductDto: UpdateProductDto) {
+
+    const existingProduct = await this.prismaService.product.findFirst({
+      where:{
+        id,
+      }
+    });
+
+    if(!existingProduct){
+      throw new NotFoundError('Product', id);
+    }
+
     return this.prismaService.product.update({
       where: {
         id,
@@ -47,7 +65,17 @@ export class ProductsService {
     });
   }
 
-  remove(id: string) {
+  async remove(id: string) {
+    const existingProduct = await this.prismaService.product.findFirst({
+      where:{
+        id,
+      }
+    });
+
+    if(!existingProduct){
+      throw new NotFoundError('Product', id);
+    }
+
     return this.prismaService.product.delete(
       {
         where: {

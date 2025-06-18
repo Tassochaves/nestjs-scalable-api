@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ### OBTÊM UM UNICO PRODUTO
-GET http://localhost:3000/products/cmahlxvms000068woi40fq5ly
+GET http://localhost:3000/products/cmahly9tm000168woswv6izey
 
 ### ATUALIZA UM PRODUTO
 PATCH http://localhost:3000/products/3d894160-d2ec-41e8-a314-1f791b55e7d7
