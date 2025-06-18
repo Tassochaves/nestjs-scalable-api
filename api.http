@@ -1,8 +1,8 @@
 
-###
+### OBTÊM TODOS OS PRODUTOS
 GET http://localhost:3000/products
 
-###
+### CRIA UM PRODUTO
 POST http://localhost:3000/products
 Content-Type: application/json
 
@@ -13,10 +13,10 @@ Content-Type: application/json
     "price": 2999.50
 }
 
-###
+### OBTÊM UM UNICO PRODUTO
 GET http://localhost:3000/products/cmahlxvms000068woi40fq5ly
 
-###
+### ATUALIZA UM PRODUTO
 PATCH http://localhost:3000/products/3d894160-d2ec-41e8-a314-1f791b55e7d7
 Content-Type: application/json
 
@@ -27,5 +27,5 @@ Content-Type: application/json
     "price": 2999.50
 }
 
-###
+### EXCLUI UM PRODUTO
 DELETE http://localhost:3000/products/3d894160-d2ec-41e8-a314-1f791b55e7d7
