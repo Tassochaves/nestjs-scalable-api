@@ -17,7 +17,7 @@ Content-Type: application/json
 GET http://localhost:3000/products/c95b07d3-5c13-4e6f-b60b-1bd778c884c7
 
 ### OBTÊM UM UNICO PRODUTO PELO NOME
-GET http://localhost:3000/products?name=notebook
+GET http://localhost:3000/products?name=Notebook
 
 ### ATUALIZA UM PRODUTO
 PATCH http://localhost:3000/products/c95b07d3-5c13-4e6f-b60b-1bd778c884c7

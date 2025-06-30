@@ -11,6 +11,7 @@ import {
   Delete,
   HttpCode,
   Query,
+  HttpStatus,
 } from 'node_modules/@nestjs/common/index';
 import { ProductQueryDto } from './dto/product-query.dto';
 
@@ -24,7 +25,8 @@ export class ProductsController {
   }
 
   @Get()
-  findAll(@Query() queryDto: ProductQueryDto) {
+  @HttpCode(HttpStatus.OK)
+  async findAll(@Query() queryDto: ProductQueryDto) {
     return this.productsService.findAll(queryDto);
   }
 

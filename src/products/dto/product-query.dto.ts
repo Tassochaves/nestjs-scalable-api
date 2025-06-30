@@ -9,7 +9,7 @@ export class ProductQueryDto{
     @Min(1)
     @IsInt()
     @IsOptional()
-    page: number;
+    page: number = 1;
 
     @Min(1)
     @IsInt()

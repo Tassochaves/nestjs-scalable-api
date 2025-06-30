@@ -5,6 +5,14 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { ProductSlugAlreadyExistsError } from './errors';
 import { NotFoundError } from 'src/common/errors';
 
+export interface PaginatedResult<T> {
+  data: T[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
+
 @Injectable()
 export class ProductsService {
   constructor(private prismaService: PrismaService) {}
@@ -27,18 +35,40 @@ export class ProductsService {
 
   }
 
-  findAll(dto: {name?: string; page?: number; limit?: number}) {
+  async findAll(dto: {name?: string; page?: number; limit?: number}): Promise<PaginatedResult<any>> {
     const {name, page = 1, limit = 10} = dto;
 
-    return this.prismaService.product.findMany({
-      ...(name && {
-        where: {
-          name: {contains: name}
-        }
-      }),
+    const whereConditions: any = {};
+
+    if (name) {
+      whereConditions.name = {
+        contains: name,
+        //mode: 'insensitive'
+      };
+    }
+
+    const products = await this.prismaService.product.findMany({
+      where: whereConditions,
       skip: (page -1) * limit,
       take: limit,
+      // orderBy: {
+      //   name: 'asc',
+      // }
     });
+
+    const totalProducts = await this.prismaService.product.count({
+      where: whereConditions,
+    });
+
+    const totalPages = Math.ceil(totalProducts / limit);
+
+    return {
+      data: products,
+      total: totalProducts,
+      page: page,
+      limit: limit,
+      totalPages: totalPages
+    }
   }
 
   async findOne(id: string) {
