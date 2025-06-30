@@ -10,7 +10,9 @@ import {
   Patch,
   Delete,
   HttpCode,
+  Query,
 } from 'node_modules/@nestjs/common/index';
+import { ProductQueryDto } from './dto/product-query.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -22,8 +24,8 @@ export class ProductsController {
   }
 
   @Get()
-  findAll() {
-    return this.productsService.findAll();
+  findAll(@Query() queryDto: ProductQueryDto) {
+    return this.productsService.findAll(queryDto);
   }
 
   @Get(':id')

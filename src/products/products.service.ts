@@ -27,8 +27,18 @@ export class ProductsService {
 
   }
 
-  findAll() {
-    return this.prismaService.product.findMany();
+  findAll(dto: {name?: string; page?: number; limit?: number}) {
+    const {name, page = 1, limit = 10} = dto;
+
+    return this.prismaService.product.findMany({
+      ...(name && {
+        where: {
+          name: {contains: name}
+        }
+      }),
+      skip: (page -1) * limit,
+      take: limit,
+    });
   }
 
   async findOne(id: string) {

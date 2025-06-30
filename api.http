@@ -1,5 +1,5 @@
 
-### OBTÊM TODOS OS PRODUTOS
+### OBTÊM TODOS OS PRODUTOS PAGINADO DE 10 EM 10
 GET http://localhost:3000/products
 
 ### CRIA UM PRODUTO
@@ -15,6 +15,9 @@ Content-Type: application/json
 
 ### OBTÊM UM UNICO PRODUTO
 GET http://localhost:3000/products/c95b07d3-5c13-4e6f-b60b-1bd778c884c7
+
+### OBTÊM UM UNICO PRODUTO PELO NOME
+GET http://localhost:3000/products?name=notebook
 
 ### ATUALIZA UM PRODUTO
 PATCH http://localhost:3000/products/c95b07d3-5c13-4e6f-b60b-1bd778c884c7
